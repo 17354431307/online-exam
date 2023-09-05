@@ -1,0 +1,6 @@
+app:
+  env: local
+  port: 8081
+  app_name: online-exam
+  app_url: http:localhost
+  db_type: mysql
