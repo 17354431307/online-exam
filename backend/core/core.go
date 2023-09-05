@@ -38,10 +38,10 @@ func InitViper(path ...string) *viper.Viper {
 				config = configEnv
 				fmt.Printf("您正在使用%s环境变量,config的路径为%s\n", internal.ConfigEnv, config)
 			}
-		} else {
-			config = path[0]
-			fmt.Printf("您正在使用func Viper()传递的值,config的路径为%s\n", config)
 		}
+	} else {
+		config = path[0]
+		fmt.Printf("您正在使用func Viper()传递的值,config的路径为%s\n", config)
 	}
 
 	vip := viper.New()
@@ -60,6 +60,10 @@ func InitViper(path ...string) *viper.Viper {
 			fmt.Println(err)
 		}
 	})
+
+	if err = vip.Unmarshal(&global.OE_CONFIG); err != nil {
+		fmt.Println(err)
+	}
 
 	fmt.Println("====1-viper====: viper init config success")
 
