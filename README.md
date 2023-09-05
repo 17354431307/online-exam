@@ -12,7 +12,7 @@ HTML + CSS +JavaScript + TypeScript + React + Vite + Sass + WebScoket + WebRTC
 
 ### 后端
 
-Go + Gin + Gorm + MySQL + Redis + JWT + 
+Go + Gin + Gorm + MySQL + Redis + Docker + Promethues 
 
 
 
