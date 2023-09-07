@@ -30,3 +30,18 @@ mysql: # MySQL 配置
   max_open_conns: 100 # 最大连接数
   log_mode: error # 日志级别
   log_zap: false # 是否通过 zap 库写日志文件
+
+pgsql: # PostgresSQL 配置
+  host: localhost # 服务器地址
+  port: 5432 # PostgresSQL 访问端口
+  config: sslmode=disable TimeZone=Asia/Shanghai # 其他配置
+  db_name: online_exam_db # 数据库名称
+  username: postgres # 用户名
+  password: 123456 # 密码
+  prefix: "t_" # 全局表前缀，单独定义 TableName 不生效
+  singular: false # 是否开启全局禁用复数，true 表示不开启
+  engine: "" #  引擎，默认 InnoDB
+  max_idle_conns: 10 # 最大空闲连接数
+  max_open_conns: 100 # 最大连接数
+  log_mode: error # 日志级别
+  log_zap: false # 是否通过 zap 库写日志文件

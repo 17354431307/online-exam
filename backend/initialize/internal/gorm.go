@@ -44,6 +44,8 @@ func (g *_gorm) Config(prefix string, singular bool) *gorm.Config {
 	switch global.OE_CONFIG.App.DbType {
 	case "mysql":
 		logMode = &global.OE_CONFIG.MySQL
+	case "pgsql":
+		logMode = &global.OE_CONFIG.PGSQL
 	default:
 		logMode = &global.OE_CONFIG.MySQL
 	}
