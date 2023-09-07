@@ -1,3 +1,5 @@
+//go:build e2e
+
 package main
 
 import (
@@ -6,11 +8,12 @@ import (
 	"backend/initialize"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"testing"
 )
 
-const AppMode = "debug"
+const AppMode = "debug" // 运行环境，主要有三种：debug、test、release
 
-func main() {
+func TestServer(t *testing.T) {
 	gin.SetMode(AppMode)
 
 	// TODO: 1. 配置初始化

@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestServer(t *testing.T) {
+func TestGin(t *testing.T) {
 
 	r := gin.New()
 

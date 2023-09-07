@@ -4,9 +4,13 @@ package global
 import (
 	"backend/config"
 	"github.com/spf13/viper"
+	"go.uber.org/zap"
+	"gorm.io/gorm"
 )
 
 var (
 	OE_CONFIG config.Configuration
 	OE_VIPER  *viper.Viper
+	OE_Log    *zap.Logger
+	OE_DB     *gorm.DB
 )

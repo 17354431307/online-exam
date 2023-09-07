@@ -16,7 +16,6 @@ func InitViper(path ...string) *viper.Viper {
 	var config string
 
 	if len(path) == 0 {
-
 		flag.StringVar(&config, "c", "", "请选择配置文件.")
 		flag.Parse()
 
@@ -33,7 +32,6 @@ func InitViper(path ...string) *viper.Viper {
 					config = internal.ConfigTestFile
 					fmt.Printf("您正在使用gin模式的%s环境名称,config的路径为%s\n", gin.EnvGinMode, internal.ConfigTestFile)
 				}
-
 			} else {
 				config = configEnv
 				fmt.Printf("您正在使用%s环境变量,config的路径为%s\n", internal.ConfigEnv, config)
