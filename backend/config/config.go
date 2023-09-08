@@ -5,6 +5,7 @@ type Configuration struct {
 	Zap   Zap   `mapstructure:"zap" json:"zap" yaml:"zap"`
 	MySQL MySQL `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
 	PGSQL PGSQL `mapstructure:"pgsql" json:"pgsql" yaml:"pgsql"`
+	Redis Redis `mapstructure:"redis" json:"redis" yaml:"redis"`
 }
 
 type App struct {

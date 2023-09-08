@@ -25,6 +25,7 @@ func main() {
 	// TODO: 3. 数据库连接
 	global.OE_DB = initialize.Gorm()
 	// TODO: 4. 其他初始化
+	initialize.OtherInit()
 
 	// TODO: 5. 启动服务
 	core.RunServer()
