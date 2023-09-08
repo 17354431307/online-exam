@@ -2,10 +2,10 @@ package core
 
 import (
 	"backend/global"
+	"backend/initialize"
 	"fmt"
 	"github.com/fvbock/endless"
 	"github.com/gin-gonic/gin"
-	"net/http"
 	"time"
 )
 
@@ -14,21 +14,18 @@ type server interface {
 }
 
 func RunServer() {
-	r := gin.Default()
-
-	r.GET("/ping", func(ctx *gin.Context) {
-		ctx.String(http.StatusOK, "pong")
-	})
+	// 初始化路由
+	Router := initialize.Routers()
 
 	address := fmt.Sprintf(":%d", global.OE_CONFIG.App.Port)
-	s := initServer(address, r)
+	s := initServer(address, Router)
 
 	// 保证文本顺序输出
 	time.Sleep(10 * time.Microsecond)
 
 	fmt.Println(`address`, address)
 
-	s.ListenAndServe() // 启动并监听 HTTP 服务
+	global.OE_Log.Error(s.ListenAndServe().Error()) // 启动并监听 HTTP 服务
 }
 
 // initServer 实现 HTTP 的无缝重启和优雅关闭
