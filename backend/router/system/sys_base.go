@@ -1,7 +1,7 @@
 package system
 
 import (
-	"backend/model/system"
+	"backend/model/system/request"
 	"backend/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -19,7 +19,7 @@ func (s *BaseRouter) InitBaseRouter(Router *gin.RouterGroup) (R gin.IRouter) {
 		})
 
 		baseRouter.POST("register", func(c *gin.Context) {
-			var form system.Register
+			var form request.Register
 
 			if err := c.ShouldBindJSON(&form); err != nil {
 				c.JSON(http.StatusOK, gin.H{

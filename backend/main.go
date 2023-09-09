@@ -24,6 +24,12 @@ func main() {
 
 	// TODO: 3. 数据库连接
 	global.OE_DB = initialize.Gorm()
+	if global.OE_DB != nil {
+		initialize.RegisterTables() // 初始化表
+		db, _ := global.OE_DB.DB()
+		defer db.Close()
+	}
+
 	// TODO: 4. 其他初始化
 	initialize.OtherInit()
 

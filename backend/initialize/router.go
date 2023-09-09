@@ -10,6 +10,7 @@ func Routers() *gin.Engine {
 	Router := gin.Default()
 
 	systemRouter := router.RouterGroupApp.System
+	exampleRouter := router.RouterGroupApp.Example
 
 	PublicGroup := Router.Group("")
 
@@ -22,6 +23,7 @@ func Routers() *gin.Engine {
 
 	{
 		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由
+		exampleRouter.InitCustomerRouter(PublicGroup)
 	}
 
 	return Router

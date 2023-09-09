@@ -43,3 +43,7 @@ func ValidateMobile(f1 validator.FieldLevel) bool {
 
 	return true
 }
+
+//func Verify(st any, roleMap Rul) {
+//
+//}

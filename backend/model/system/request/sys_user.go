@@ -1,4 +1,4 @@
-package system
+package request
 
 import "backend/utils"
 
@@ -16,4 +16,12 @@ func (register Register) GetMessages() utils.ValidatorMessages {
 		"mobile.mobile":     "手机号码格式不正确",
 		"password.required": "用户密码不能为空",
 	}
+}
+
+// User login structure
+type Login struct {
+	Username  string `json:"username"`  // 用户名
+	Password  string `json:"password"`  // 密码
+	Captcha   string `json:"captcha"`   // 验证码
+	CaptchaId string `json:"captchaId"` // 验证码ID
 }

@@ -23,7 +23,7 @@ mysql: # MySQL 配置
   db_name: online_exam_db # 数据库名称
   username: root # 用户名
   password: 123456 # 密码
-  prefix: "t_" # 全局表前缀，单独定义 TableName 不生效
+  prefix: "" # 全局表前缀，单独定义 TableName 不生效
   singular: false # 是否开启全局禁用复数，true 表示不开启
   engine: "" #  引擎，默认 InnoDB
   max_idle_conns: 10 # 最大空闲连接数

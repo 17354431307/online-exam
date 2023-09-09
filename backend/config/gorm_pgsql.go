@@ -20,13 +20,13 @@ type PGSQL struct {
 
 // Dsn 基于配置文件或者 dsn
 func (p *PGSQL) Dsn() string {
-	// host=localhost user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai
-	return fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s %s", p.Host, p.Username, p.Password, p.DbName, p.Port, p.Config)
+	// host=localhost business=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai
+	return fmt.Sprintf("host=%s business=%s password=%s dbname=%s port=%s %s", p.Host, p.Username, p.Password, p.DbName, p.Port, p.Config)
 }
 
 // LinkDsb 根据 dbname 生成 dsn
 func (p *PGSQL) LinkDsb(dbName string) string {
-	return fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s %s", p.Host, p.Username, p.Password, dbName, p.Port, p.Config)
+	return fmt.Sprintf("host=%s business=%s password=%s dbname=%s port=%s %s", p.Host, p.Username, p.Password, dbName, p.Port, p.Config)
 }
 
 func (p *PGSQL) GetLogMode() string {
