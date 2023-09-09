@@ -13,7 +13,7 @@ type CustomerService struct {
 // @description: 创建客户
 // @param: e model.ExaCustomer
 // @return: err error
-func (c *CustomerService) CreateExaCustomer(e example.ExaCusmoter) (err error) {
+func (c *CustomerService) CreateExaCustomer(e example.ExaCustomer) (err error) {
 	err = global.OE_DB.Create(&e).Error
 	return err
 }
@@ -21,9 +21,9 @@ func (c *CustomerService) CreateExaCustomer(e example.ExaCusmoter) (err error) {
 // @author: 模板样例
 // @function: DeleteExCustomer
 // @description: 删除客户
-// @param: e model.ExaCusmoter
+// @param: e model.ExaCustomer
 // @return: err error
-func (c *CustomerService) DeleteExCustomer(e example.ExaCusmoter) (err error) {
+func (c *CustomerService) DeleteExCustomer(e example.ExaCustomer) (err error) {
 	err = global.OE_DB.Delete(&e).Error
 	return err
 }
@@ -31,9 +31,9 @@ func (c *CustomerService) DeleteExCustomer(e example.ExaCusmoter) (err error) {
 // @author: 模板样例
 // @function: UpdateExaCustomer
 // @description: 更新用户
-// @param: e *model.ExaCusmoter
+// @param: e *model.ExaCustomer
 // @return: err error
-func (c *CustomerService) UpdateExaCustomer(e *example.ExaCusmoter) (err error) {
+func (c *CustomerService) UpdateExaCustomer(e *example.ExaCustomer) (err error) {
 	err = global.OE_DB.Save(e).Error
 	return err
 }
@@ -42,8 +42,8 @@ func (c *CustomerService) UpdateExaCustomer(e *example.ExaCusmoter) (err error) 
 // @function: GetExaCustomer
 // @description: 获取客户信息
 // @param: id uint
-// @return: customer model.ExaCusmoter, err error
-func (c *CustomerService) GetExaCustomer(id uint) (customer example.ExaCusmoter, err error) {
+// @return: customer model.ExaCustomer, err error
+func (c *CustomerService) GetExaCustomer(id uint) (customer example.ExaCustomer, err error) {
 	err = global.OE_DB.Where("id = ?", id).First(&customer).Error
 	return
 }

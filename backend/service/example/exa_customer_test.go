@@ -16,11 +16,11 @@ func TestCustomerService_CreateExaCustomer(t *testing.T) {
 
 	testCases := []struct {
 		name     string
-		customer example.ExaCusmoter
+		customer example.ExaCustomer
 	}{
 		{
 			name: "create customer",
-			customer: example.ExaCusmoter{
+			customer: example.ExaCustomer{
 				CustomerName:       "何小文",
 				CustomerPhoneData:  "12345678",
 				SysUserID:          1,
@@ -42,12 +42,12 @@ func TestCustomerService_DeleteExCustomer(t *testing.T) {
 
 	testCases := []struct {
 		name     string
-		customer example.ExaCusmoter
+		customer example.ExaCustomer
 	}{
 		{
 			name: "delete customer by id",
-			customer: func() example.ExaCusmoter {
-				res := example.ExaCusmoter{}
+			customer: func() example.ExaCustomer {
+				res := example.ExaCustomer{}
 				res.ID = 1
 				return res
 			}(),
@@ -100,12 +100,12 @@ func TestCustomerService_UpdateExaCustomer(t *testing.T) {
 	testCases := []struct {
 		name     string
 		id       uint
-		changeFn func(curtomer *example.ExaCusmoter)
+		changeFn func(curtomer *example.ExaCustomer)
 	}{
 		{
 			name: "update",
 			id:   2,
-			changeFn: func(curtomer *example.ExaCusmoter) {
+			changeFn: func(curtomer *example.ExaCustomer) {
 				curtomer.CustomerName = "王辰"
 			},
 		},

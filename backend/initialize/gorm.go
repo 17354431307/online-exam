@@ -25,7 +25,7 @@ func Gorm() *gorm.DB {
 func RegisterTables() {
 	db := global.OE_DB
 	err := db.AutoMigrate(
-		example.ExaCusmoter{},
+		example.ExaCustomer{},
 		business.User{},
 	)
 
