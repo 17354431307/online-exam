@@ -33,7 +33,7 @@ func initCasBinWithGorm() (*casbin.Enforcer, error) {
 	}
 
 	// 创建 casbin 适配器
-	e, err := casbin.NewEnforcer("./model.conf", a)
+	e, err := casbin.NewEnforcer("./model.conf.conf", a)
 	if err != nil {
 		return nil, fmt.Errorf("casbin.NewEnforcer 调用失败, %v", err)
 	}
