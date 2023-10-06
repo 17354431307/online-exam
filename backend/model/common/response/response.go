@@ -32,6 +32,10 @@ func FailWithMessage(message string, c *gin.Context) {
 	Result(ERROR, map[string]any{}, message, c)
 }
 
+func FailWithDetailed(data any, message string, c *gin.Context) {
+	Result(ERROR, data, message, c)
+}
+
 func OkWithMessage(message string, c *gin.Context) {
 	Result(SUCCESS, map[string]any{}, message, c)
 }

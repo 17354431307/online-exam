@@ -5,6 +5,12 @@ app: # 基本配置信息
   app_url: http:localhost # 用于域名
   db_type: mysql # 使用的数据库
 
+jwt: # jwt 配置
+  signing_key: moty1999
+  expires_time: 7d
+  buffer_time: 1d
+  issuer: moty1999
+
 zap: # 日志配置
   level: info # 日志级别
   prefix: '[online_exam/server]' # 日志前缀
@@ -50,3 +56,6 @@ redis: # redis 配置
   db: 0
   addr: 127.0.0.1:6379
   password: "123456"
+
+
+

@@ -1,6 +1,7 @@
 package initialize
 
 import (
+	"backend/docs"
 	_ "backend/docs"
 	"backend/global"
 	"backend/router"
@@ -16,13 +17,13 @@ func Routers() *gin.Engine {
 	systemRouter := router.RouterGroupApp.System
 	exampleRouter := router.RouterGroupApp.Example
 
-	//docs.SwaggerInfo.BasePath = global.OE_CONFIG.App.
-
+	docs.SwaggerInfo.BasePath = global.OE_CONFIG.App.RouterPrefix
 	// 注册 swagger
-	Router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+	Router.GET(global.OE_CONFIG.App.RouterPrefix+"/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 	global.OE_Log.Info("register swagger handler")
 
-	PublicGroup := Router.Group("")
+	// 方便统一添加路由前缀 多服务器上线使用
+	PublicGroup := Router.Group(global.OE_CONFIG.App.RouterPrefix)
 	{
 		// 健康检测
 		PublicGroup.GET("/health", func(c *gin.Context) {
@@ -31,7 +32,7 @@ func Routers() *gin.Engine {
 	}
 
 	{
-		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由
+		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由 不做鉴权
 		exampleRouter.InitCustomerRouter(PublicGroup)
 	}
 
