@@ -19,10 +19,11 @@ import (
 	act 用户对资源的操作
 */
 
-// initCasBinWithGorm 用 grom 的 adapter 初始化 csbin enforcer
-func initCasBinWithGorm() (*casbin.Enforcer, error) {
+// initEnforcer 用 grom 的 adapter 初始化 csbin enforcer
+func initEnforcer() (*casbin.Enforcer, error) {
 	// 初始化 grom 适配器，在 casbin 的执行器中使用
 	// gorm 使用 mysql 中已经 存在的 casbin_demo_db 数据库，并会使用 casbin_rule 表，如果表不存在会创建
+	// 第三个参数 true 就是代表着不存在就创建
 	a, err := gormadapter.NewAdapter(
 		"mysql",
 		"root:123456@tcp(127.0.0.1:3306)/casbin_demo_db?charset=utf8mb4&parseTime=true&loc=Local",
@@ -71,7 +72,7 @@ func myAuth(e *casbin.Enforcer) gin.HandlerFunc {
 }
 
 func Test_Casbin_ACL(t *testing.T) {
-	e, err := initCasBinWithGorm()
+	e, err := initEnforcer()
 	assert.NoError(t, err)
 
 	r := gin.New()
