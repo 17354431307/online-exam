@@ -14,6 +14,7 @@ func (e *CustomerRouter) InitCustomerRouter(Router *gin.RouterGroup) gin.IRouter
 	exaCustomerApi := v1.ApiGroupApp.ExampleApiGroup.CustomerApi
 	{
 		customerRouter.POST("customer", exaCustomerApi.CreateExaCustomer)
+		customerRouter.GET("hello", exaCustomerApi.HelloWord)
 	}
 
 	return customerRouter

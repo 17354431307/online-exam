@@ -10,10 +10,11 @@ type Configuration struct {
 }
 
 type App struct {
-	Env          string `mapstructure:"env" json:"env" yaml:"env"`
-	Port         int    `mapstructure:"port" json:"port" yaml:"port"`
-	AppName      string `mapstructure:"app_name" json:"app_name" yaml:"app_name"`
-	AppUrl       string `mapstructure:"app_url" json:"app_url" yaml:"app_url"`
-	DbType       string `mapstructure:"db_type" json:"db_type" yaml:"db_type"`
-	RouterPrefix string `mapstructure:"router_prefix" json:"router_prefix" yaml:"router_prefix"`
+	Env           string `mapstructure:"env" json:"env" yaml:"env"` // 环境值
+	Port          int    `mapstructure:"port" json:"port" yaml:"port"`
+	AppName       string `mapstructure:"app_name" json:"app_name" yaml:"app_name"`
+	AppUrl        string `mapstructure:"app_url" json:"app_url" yaml:"app_url"`
+	DbType        string `mapstructure:"db_type" json:"db_type" yaml:"db_type"` // 数据库类型:mysql(默认)|sqlite|sqlserver|postgresql
+	RouterPrefix  string `mapstructure:"router_prefix" json:"router_prefix" yaml:"router_prefix"`
+	UseMultipoint bool   `mapstructure:"router_prefix" json:"use_multipoint" yaml:"use_multipoint"` // 多点登录拦截
 }

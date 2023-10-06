@@ -4,6 +4,7 @@ import (
 	"backend/docs"
 	_ "backend/docs"
 	"backend/global"
+	"backend/middleware"
 	"backend/router"
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"
@@ -31,9 +32,11 @@ func Routers() *gin.Engine {
 		})
 	}
 
+	privateGroup := Router.Group(global.OE_CONFIG.App.RouterPrefix)
+	privateGroup.Use(middleware.JWTAuth()).Use(middleware.CasbinHandler())
 	{
-		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由 不做鉴权
-		exampleRouter.InitCustomerRouter(PublicGroup)
+		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由不做鉴权
+		exampleRouter.InitCustomerRouter(privateGroup)
 	}
 
 	return Router

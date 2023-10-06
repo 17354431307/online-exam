@@ -37,3 +37,7 @@ func (e *CustomerApi) CreateExaCustomer(c *gin.Context) {
 
 	response.OkWithMessage("创建成功", c)
 }
+
+func (e *CustomerApi) HelloWord(c *gin.Context) {
+	response.OkWithMessage("hello, world", c)
+}
