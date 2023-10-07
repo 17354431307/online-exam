@@ -21,7 +21,6 @@ type CustomerApi struct {
 // @Router    /customer/customer [post]
 func (e *CustomerApi) CreateExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
-
 	err := c.ShouldBindJSON(&customer)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)

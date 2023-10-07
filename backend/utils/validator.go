@@ -7,10 +7,8 @@ import (
 )
 
 type Validator interface {
-	GetMessages() ValidatorMessages
+	GetMessages() map[string]string
 }
-
-type ValidatorMessages map[string]string
 
 // GetErrorMsg 获取错误信息
 func GetErrorMsg(request any, err error) string {
@@ -43,7 +41,3 @@ func ValidateMobile(f1 validator.FieldLevel) bool {
 
 	return true
 }
-
-//func Verify(st any, roleMap Rul) {
-//
-//}

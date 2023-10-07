@@ -1,6 +1,7 @@
 package system
 
 import (
+	v1 "backend/api/v1"
 	"backend/model/system/request"
 	"backend/utils"
 	"github.com/gin-gonic/gin"
@@ -13,10 +14,9 @@ type BaseRouter struct {
 func (s *BaseRouter) InitBaseRouter(Router *gin.RouterGroup) (R gin.IRouter) {
 	baseRouter := Router.Group("base")
 
+	baseApi := v1.ApiGroupApp.SystemApiGroup.BaseApi
 	{
-		baseRouter.POST("login", func(c *gin.Context) {
-			c.JSON(http.StatusOK, "ok")
-		})
+		baseRouter.POST("login", baseApi.Login)
 
 		baseRouter.POST("register", func(c *gin.Context) {
 			var form request.Register

@@ -39,3 +39,7 @@ func FailWithDetailed(data any, message string, c *gin.Context) {
 func OkWithMessage(message string, c *gin.Context) {
 	Result(SUCCESS, map[string]any{}, message, c)
 }
+
+func OkWithDetailed(data any, message string, c *gin.Context) {
+	Result(SUCCESS, data, message, c)
+}

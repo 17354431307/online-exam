@@ -5,6 +5,7 @@ import (
 	"backend/model/system/request"
 	"errors"
 	"github.com/golang-jwt/jwt/v5"
+	"time"
 )
 
 type JWT struct {
@@ -22,6 +23,24 @@ func NewJWT() *JWT {
 	return &JWT{
 		[]byte(global.OE_CONFIG.Jwt.SigningKey),
 	}
+}
+
+// CreateClaims 创建 jwt claims 自定义声明部分
+func (j *JWT) CreateClaims(baseClaims request.BaseClaims) request.CustomClaims {
+	bf, _ := ParseDuration(global.OE_CONFIG.Jwt.BufferTime)
+	ep, _ := ParseDuration(global.OE_CONFIG.Jwt.ExpiresTime)
+
+	claims := request.CustomClaims{
+		BaseClaims: baseClaims,
+		BufferTime: int64(bf / time.Second), // 缓冲时间为1天，缓冲时间内会获得新的token令牌，此时一个用户会存在两个有效的令牌，但是前端只留一个，另一个丢弃
+		RegisteredClaims: jwt.RegisteredClaims{
+			Audience:  jwt.ClaimStrings{"OE"},                    // 受众
+			NotBefore: jwt.NewNumericDate(time.Now().Add(-1000)), // 签名生效时间
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(ep)),    // 过期时间，配置文件
+			Issuer:    global.OE_CONFIG.Jwt.Issuer,               // 签名的发行者
+		},
+	}
+	return claims
 }
 
 // CreateToken 创建一个 token

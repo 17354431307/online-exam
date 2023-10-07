@@ -31,11 +31,14 @@ func Routers() *gin.Engine {
 			c.JSON(http.StatusOK, "ok")
 		})
 	}
+	{
+		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由不做鉴权
+	}
 
 	privateGroup := Router.Group(global.OE_CONFIG.App.RouterPrefix)
 	privateGroup.Use(middleware.JWTAuth()).Use(middleware.CasbinHandler())
 	{
-		systemRouter.InitBaseRouter(PublicGroup) // 注册基础功能路由不做鉴权
+		
 		exampleRouter.InitCustomerRouter(privateGroup)
 	}
 
